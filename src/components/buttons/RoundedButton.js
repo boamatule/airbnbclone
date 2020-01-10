@@ -5,22 +5,22 @@ import colors from "../../styles/colors";
 
 export default class RoundedButton extends Component {
   render() {
-    const { text, icon, textColor, background, handleOnPress } = this.props;
+    const { text, icon, textColor, background } = this.props;
     const backgroundColor = background || 'transparent';
     const color = textColor || colors.black;
 
     return (
-      <TouchableHighlight style={[{ backgroundColor }, styles.wrapper]} onPress={handleOnPress}>
+      <TouchableHighlight style={[{ backgroundColor }, styles.wrapper]}>
         <View>
-          {icon}
-           <Text style={[{ color }, styles.buttonText]}>{text}</Text>
+          {/* {icon} */}
+          <Text style={[{ color }, styles.buttonText]}>{text}</Text>
         </View>
       </TouchableHighlight>
     );
   }
 }
 
-RoundedButton.ropTypes = {
+RoundedButton.propTypes = {
   text: PropTypes.string.isRequired,
   textColor: PropTypes.string,
   background: PropTypes.string,
@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
     display: "flex",
     borderRadius: 40,
     borderWidth: 1,
-    borderColor: colors.white
+    borderColor: colors.white,
+    margin: 15,
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 16,
