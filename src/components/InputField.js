@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { PropTypes } from "prop-types";
 import {
   View,
   Text,
@@ -31,7 +30,8 @@ render() {
       textColor,
       borderBottomColor,
       inputType,
-      customStyle
+      customStyle,
+      onChangeText
     } = this.props;
     const color = labelColor || colors.white;
     const fontSize = labelTextSize || 14;
@@ -59,6 +59,8 @@ return (
           styles.inputFiled
         ]}
         secureTextEntry={secureInput}
+        onChangeText={onChangeText}
+        autoCapitalize="none"
       />
     </View>
   );

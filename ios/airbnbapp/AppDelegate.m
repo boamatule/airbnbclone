@@ -10,11 +10,11 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import UIKit
-#import Firebase
+// #import UIKit
+// #import <Firebase>
 
 
-@UIApplicationMain
+// @UIApplicationMain
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -49,15 +49,15 @@
 
 
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+// @UIApplicationMain
+// class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var window: UIWindow?
+//   var window: UIWindow?
 
-  func application(_ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions:
-      [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    FirebaseApp.configure()
-    return true
-  }
-}
+//   func application(_ application: UIApplication,
+//     didFinishLaunchingWithOptions launchOptions:
+//       [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//     FirebaseApp.configure()
+//     return true
+//   }
+// }
