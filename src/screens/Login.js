@@ -10,6 +10,7 @@ import {
 import colors from "../styles/colors";
 import InputField from "../components/InputField";
 import NextArrowButton from "../components/buttons/NextArrowButton";
+import Notification from "../components/buttons/Notification";
 
 
 export default class Login extends Component {
@@ -106,6 +107,9 @@ export default class Login extends Component {
               <NextArrowButton
                 handlePress={this.Login}
               />
+         </View>
+         <View>
+           <Notification />
          </View>
        </KeyboardAvoidingView>
     );
