@@ -14,10 +14,8 @@ import Notification from "../components/buttons/Notification";
 
 
 export default class Login extends Component {
-
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       user: null,
       email: "",
@@ -25,7 +23,16 @@ export default class Login extends Component {
       formValid: true,
       error: ""
     }
+    this.handleCloseNotification = this.handleCloseNotification.bind(this);
   }
+
+  handleNextButtom() {
+    alert('Next Buttom Pressed');
+  }
+  handleCloseNotification() {
+    this.setState({ formValid : true });
+  }
+
 
   componentDidMount() {
     this.unsubscriber = firebase.auth().onAuthStateChanged( user => {
@@ -70,12 +77,14 @@ export default class Login extends Component {
 
   render() {
     const { formValid, loadingVisible } = this.state;
+    const showNotification = formValid ? false : true;
+    const background = formValid ? colors.green01 : colors.darkOrange;
 
     return (
-      <KeyboardAvoidingView style={[styles.avoidView, styles.wrapper]}  behavior="padding">
+      <KeyboardAvoidingView style={[{ backgroundColor: background}, styles.wrapper]}  behavior="padding">
         <View style={styles.scrollViewWrapper}>
           <ScrollView style={styles.scrollView}>
-            <Text style={styles.loginHeader}>Login</Text>
+            <Text style={styles.loginHeader}>Log In</Text>
             <InputField 
               labelText="EMAIL ADDRESS" 
               onChangeText={this.handleEmailChange}
@@ -98,19 +107,23 @@ export default class Login extends Component {
               inputType="password"  
               customStyle={{marginBottom:30}}
               // showCheckmark={password === "12345"}
-
-            />
-            
+            />  
           </ScrollView>
-          </View>
             <View style={styles.nextButton}>
               <NextArrowButton
-                handlePress={this.Login}
+                handleNextButtom={this.handleNextButtom}
               />
          </View>
-         <View>
-           <Notification />
+          <View style={showNotification ? {marginTop: 10} : {}}>
+           <Notification
+            showNotification={showNotification}
+            handleCloseNotification={this.handleCloseNotification}
+            type="Error"
+            firstLine="Those credentials don't look right."
+            secondLine="Please try again."
+            />
          </View>
+        </View>
        </KeyboardAvoidingView>
     );
   }
@@ -120,7 +133,12 @@ const styles = StyleSheet.create({
   wrapper: {
     display: "flex",
     flex: 1,
-    backgroundColor: "#008388"
+  },
+  scrollView: {
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingTop: 20,
+    flex: 1
   },
   scrollViewWrapper: {
     marginTop: 70,
