@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
-import colors from "../styles/colors";
+import colors from "../../styles/colors";
 import InputField from "../components/InputField";
 import NextArrowButton from "../components/buttons/NextArrowButton";
 import Notification from "../components/buttons/Notification";
@@ -17,104 +17,145 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
-      email: "",
-      password: "",
       formValid: true,
-      error: ""
+      validEmail: false,
+      emailAddress: '',
+      validPassword: false,
+      error: "",
+      // user: null,
     }
     this.handleCloseNotification = this.handleCloseNotification.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleNextButton = this.handleNextButton.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleNextButtonState = this.toggleNextButtonState.bind(this);
   }
 
-  handleNextButtom() {
-    alert('Next Buttom Pressed');
+  handleNextButton() {
+    if (this.state.emailAddress === 'hello@imandy.ie' && this.state.validPassword) {
+      alert('sucsess');
+      this.setState({ formValid: true });
+    } else {
+      this.setState({ formValid: false });
+    }
   }
+
   handleCloseNotification() {
     this.setState({ formValid : true });
   }
 
+  handleEmailChange(email) {
+   const emailCheckRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+   this.setState({ emailAddress: email });
 
-  componentDidMount() {
-    this.unsubscriber = firebase.auth().onAuthStateChanged( user => {
-      this.setState({ user });
-    })
-  }
-
-  Login = () => {
-    this.setState({ loadingVisible: true });
-
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        this.setState({ user });
-        this.setState({ loadingVisible: false });
-      })
-      .catch(error => 
-       this.setState({
-         error: error.message,
-         formValid: false
-       })
-    );
-  };
-
-  componentWillUnmount() {
-    if (this.unsubscriber) {
-      this.unsubscriber();
+   if (!this.state.validEmail) {
+     if (emailCheckRegex.test(email)) {
+       this.setState({ validEmail: true });
+      } 
+    } else {
+      if (!emailCheckRegex.test(email)) {
+        this.setState({ validEmail: false});
+      }
     }
   }
 
-  handleEmailChange = email => {
-    this.setState({ email: email });
-  };
-  handlePasswordChange = password => {
-    this.setState({ password: password });
+  handlePasswordChange(password) {
+    if (!this.state.validPassword) {
+      if (password.length > 4) {
+        this.setState({ validPassword: true});
+      }
+    } else if (password <= 4 ) {
+      this.setState({ validPassword: false });
+    }
   }
-  static navigationOptions = {
-    header: null
-  };
+
+  toggleNextButtonState() {
+    const { validEmail, validPassword } = this.state;
+    if (validEmail && validPassword) {
+      return false;
+    }
+    return true;
+  }
+  // static navigationOptions = {
+  //   header: null
+  // };
+
+
+  // componentDidMount() {
+  //   this.unsubscriber = firebase.auth().onAuthStateChanged( user => {
+  //     this.setState({ user });
+  //   })
+  // }
+
+  // Login = () => {
+  //   this.setState({ loadingVisible: true });
+
+
+  //   firebase
+  //     .auth()
+  //     .signInWithEmailAndPassword(this.state.email, this.state.password)
+  //     .then(user => {
+  //       this.setState({ user });
+  //       this.setState({ loadingVisible: false });
+  //     })
+  //     .catch(error => 
+  //      this.setState({
+  //        error: error.message,
+  //        formValid: false
+  //      })
+  //   );
+  // };
+
+  // componentWillUnmount() {
+  //   if (this.unsubscriber) {
+  //     this.unsubscriber();
+  //   }
+  // }
 
   render() {
-    const { formValid, loadingVisible } = this.state;
+    const { formValid } = this.state;
     const showNotification = formValid ? false : true;
     const background = formValid ? colors.green01 : colors.darkOrange;
+    const notificationMarginTop = showNotification ? 10 : 0;
 
     return (
-      <KeyboardAvoidingView style={[{ backgroundColor: background}, styles.wrapper]}  behavior="padding">
+      <KeyboardAvoidingView style={[{ backgroundColor: background}, styles.wrapper]}
+       behavior="padding"
+       >
         <View style={styles.scrollViewWrapper}>
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}>Log In</Text>
             <InputField 
-              labelText="EMAIL ADDRESS" 
-              onChangeText={this.handleEmailChange}
+              labelText="EMAIL ADDRESS"
               labelTextSize={14} 
               labelColor={colors.white} 
-              textColor={colors.orange} 
+              textColor={colors.white} 
               borderBottomColor={colors.white} 
               inputType="email" 
               customStyle={{marginBottom:30}} 
-              // showCheckmark={email === "test@gmail.com"}
+              onChangeText={this.handleEmailChange}
+              // showCheckmark={email === "hello@imandy.ie"}
                 
             />
             <InputField 
-              labelText="PASSWORD" 
-              onChangeText={this.handlePasswordChange}
+              labelText="PASSWORD"
               labelTextSize={14} 
               labelColor={colors.white} 
               textColor={colors.white} 
               borderBottomColor={colors.white} 
               inputType="password"  
               customStyle={{marginBottom:30}}
+              onChangeText={this.handlePasswordChange}
               // showCheckmark={password === "12345"}
             />  
           </ScrollView>
             <View style={styles.nextButton}>
               <NextArrowButton
-                handleNextButtom={this.handleNextButtom}
+                handleNextButton={this.handleNextButton}
+                disable={this.toggleNextButtonState()}
               />
-         </View>
-          <View style={showNotification ? {marginTop: 10} : {}}>
+          </View>
+          <View style={[styles.notificationWrapper, {marginTop: notificationMarginTop}]}>
            <Notification
             showNotification={showNotification}
             handleCloseNotification={this.handleCloseNotification}
@@ -151,7 +192,7 @@ const styles = StyleSheet.create({
     flex:1
    },
   loginHeader: {
-    fontSize: 28,
+    fontSize: 34,
     color: colors.white,
     fontWeight: "300",
     marginBottom: 40
@@ -160,5 +201,10 @@ const styles = StyleSheet.create({
       alignItems: 'flex-end',
       right: 20,
       bottom: 20
-    }
+    },
+    notificationWrapper: {
+      position: 'absolute',
+      bottom: 0,
+      zIndex: 999,
+    },
   });

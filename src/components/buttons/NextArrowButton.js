@@ -6,21 +6,21 @@ import colors from '../../styles/colors';
 
 export default class NextArrowButton extends Component {
   render() {
-    const { disabled, handlePress } = this.props;
-     // console.log()
-    const opacityStyle = disabled ? { backgroundColor: 'rgba(255, 255, 255,0.2)'} : { backgroundColor: 'rgba(255, 255, 255,0.6)'}
+    const { disabled, handleNextButton } = this.props;
+    const opacityStyle = disabled ? 0.2 : 0.6;
     return (
       <View style={styles.buttonWrapper}>
         <TouchableHighlight
-          onPress={handlePress}
-          style={[opacityStyle, styles.button]}>
+          style={[{opacity: opacityStyle}, styles.button]}
+          onPress={handleNextButton}
+          disabled={disabled}
+          >
           <Icon 
             name="angle-right"
             color={colors.green01}
             size={32}
-            style={StyleSheet.icon}
-            disabled={disabled}
-            />
+            style={styles.icon}
+          />
         </TouchableHighlight>
       </View>
     );
@@ -29,7 +29,7 @@ export default class NextArrowButton extends Component {
 
 NextArrowButton.propTypes = {
   disabled: PropTypes.bool,
-  handleNextButton: PropTypes.func
+  handleNextButton: PropTypes.func,
 };
 
 

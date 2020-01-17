@@ -7,7 +7,7 @@ import {
   TouchableOpacity, 
 } from "react-native";
 
-import colors from '../styles/colors'
+import colors from '../../styles/colors'
 
 export default class InputField extends Component {
 constructor(props) {
@@ -37,35 +37,42 @@ render() {
     const fontSize = labelTextSize || 14;
     const inputColor = textColor || colors.white;
     const borderBottom = borderBottomColor || "transparent";
-    const { secureInput } = this.state
+    const { secureInput } = this.state;
 
 return (
     <View style={[customStyle, styles.wrapper]}>
       <Text style={[{ color, fontSize }, styles.label]}>{labelText}</Text>
       {inputType === "password" ? (
         <TouchableOpacity
-          style={styles.showButton}
-          onPress={this.toggleShowPassword}
+          style={styles.showButton} onPress={this.toggleShowPassword}
           >
           <Text style={styles.showButtonText}>
             {secureInput ? "Show" : "Hide"}
           </Text>
         </TouchableOpacity>
       ) : null}
-      <TextInput
-        autoCorrect={false}
-        style={[
-          { color: inputColor, borderBottomColor: borderBottom },
-          styles.inputFiled
-        ]}
-        secureTextEntry={secureInput}
-        onChangeText={onChangeText}
-        autoCapitalize="none"
-      />
-    </View>
-  );
+        <TextInput
+          autoCorrect={false}
+          style={[{ color: inputColor, borderBottomColor: borderBottom }, styles.inputField]}
+          secureTextEntry={secureInput}
+          onChangeText={onChangeText}
+          autoCapitalize="none"
+        />
+      </View>
+    );
+  }
 }
-}
+
+InputField.propTypes = {
+  labelText: PropTypes.isRequired,
+  labelTextSize: PropTypes.number,
+  labelColor: PropTypes.string,
+  textColor: PropTypes.string,
+  borderBottomColor: PropTypes.string,
+  inputType: PropTypes.string.isRequired,
+  customStyle: PropTypes.object,
+  onChangeText: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
 wrapper: {
