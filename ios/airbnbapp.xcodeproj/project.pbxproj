@@ -17,6 +17,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* airbnbappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* airbnbappTests.m */; };
+		B9FED58E240DF55000816C77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9FED58D240DF54F00816C77 /* GoogleService-Info.plist */; };
 		C809A4938BE92AFC37EC7EF4 /* libPods-airbnbapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F216749A8E0A708B6D15D01D /* libPods-airbnbapp.a */; };
 		CB314B9F48D72E9EE67CEF61 /* libPods-airbnbappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04467C94BF8A83FFA0576918 /* libPods-airbnbappTests.a */; };
 		F544F57DB1A1A2A56CFBF246 /* libPods-airbnbapp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088258EDF862F25E928CAC7C /* libPods-airbnbapp-tvOSTests.a */; };
@@ -62,6 +63,7 @@
 		7A75DF8BFDF55E91675FD8BE /* Pods-airbnbapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbapp.release.xcconfig"; path = "Target Support Files/Pods-airbnbapp/Pods-airbnbapp.release.xcconfig"; sourceTree = "<group>"; };
 		A3D69ADA84433914AC79724C /* Pods-airbnbapp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbapp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-airbnbapp-tvOSTests/Pods-airbnbapp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		AEB3BE0E503CBD65B189CFE7 /* libPods-airbnbapp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-airbnbapp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9FED58D240DF54F00816C77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E460D3815969FE25A9EA1EA5 /* Pods-airbnbappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbappTests.release.xcconfig"; path = "Target Support Files/Pods-airbnbappTests/Pods-airbnbappTests.release.xcconfig"; sourceTree = "<group>"; };
 		E729D655F0E1B6CE576EE532 /* Pods-airbnbappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbappTests.debug.xcconfig"; path = "Target Support Files/Pods-airbnbappTests/Pods-airbnbappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -129,6 +131,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				B9FED58D240DF54F00816C77 /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -154,7 +157,6 @@
 			children = (
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -203,7 +205,6 @@
 				E729D655F0E1B6CE576EE532 /* Pods-airbnbappTests.debug.xcconfig */,
 				E460D3815969FE25A9EA1EA5 /* Pods-airbnbappTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -318,6 +319,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -348,6 +350,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				B9FED58E240DF55000816C77 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +451,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-airbnbapp/Pods-airbnbapp-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -467,6 +472,8 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",

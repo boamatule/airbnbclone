@@ -7,7 +7,8 @@ import {
   TouchableOpacity, 
 } from "react-native";
 
-import colors from '../../styles/colors'
+import colors from '../styles/colors'
+import { PropTypes } from "prop-types";
 
 export default class InputField extends Component {
 constructor(props) {

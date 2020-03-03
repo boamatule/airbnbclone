@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
-import colors from "../../styles/colors";
+import colors from "../styles/colors";
 import InputField from "../components/InputField";
 import NextArrowButton from "../components/buttons/NextArrowButton";
 import Notification from "../components/buttons/Notification";
