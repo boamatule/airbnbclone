@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, TextInput, SafeAreaView, StyleSheet} from 'react-native';
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default class Explore extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Explore</Text>
-      </View>
-    )
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <View 
+           style={{
+            backgroundColor: "white",
+            height: 80,
+            borderBottomWidth: 1,
+            borderBottomColor: "#dddddd"
+          }}
+          >
+            <Icon name="ios-search" size={20} style={{ marginRight: 10 }}/>
+            <TextInput />
+          </View>
+        </View>
+      </SafeAreaView>
+    );
   }
 }
 

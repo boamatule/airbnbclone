@@ -8,7 +8,7 @@ import Trip from '../screens/Trip';
 import LoggedOut from "../screens/LoggedOut";
 import Login from "../screens/Login";
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Image} from 'react-native'
+import {Image, StyleSheet} from 'react-native'
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -63,7 +63,21 @@ const TabNavigator = createBottomTabNavigator(
   },
 );
 
+// const styles = StyleSheet.create({
 
+//     tabBarOptions: {
+//       activeTintColor: "red",
+//       inactiveTintColor: "grey",
+//       style: {
+//         backgroundColor: "white",
+//         borderTopWidth: 0,
+//         shadowOffset: { width: 5, height: 3 },
+//         shadowColor: "black",
+//         shadowOpacity: 0.5,
+//         elevation: 5
+//       }
+//     }
+// })
 
 
 export default createAppContainer(TabNavigator);
