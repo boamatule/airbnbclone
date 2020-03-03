@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { View, TextInput, SafeAreaView, Text, Image, ScrollView } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
+import Category from "../components/Category";
+
+
 
 export default class Explore extends Component {
   render() {
@@ -35,9 +38,8 @@ export default class Explore extends Component {
               />
             </View>
           </View>
-        </SafeAreaView>
 
-        <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
+          <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
             <Text
               style={{
                 fontSize: 24,
@@ -45,34 +47,20 @@ export default class Explore extends Component {
                 paddingHorizontal: 20
               }}
             >
-              What can we help you find, Boa?
+              What can we help you find, Kriss?
             </Text>
+            <Category imageUri={require("../img/Home.jpg")} name="Home" />
+            <Category
+              imageUri={require("../img/Safari.jpg")}
+              name="Experiences"
+            />
+            <Category
+              imageUri={require("../img/Food.jpg")}
+              name="Resturant"
+            />
           </View>
 
-          <View
-            style={{
-              height: 130,
-              width: 130,
-              marginLeft: 20,
-              borderWidth: 0.5,
-              borderColor: "#dddddd"
-            }}
-          >
-            <View style={{ flex: 2 }}>
-              <Image
-                source={require("../img/home.jpeg")}
-                style={{
-                  flex: 1,
-                  width: null,
-                  height: null,
-                  resizeMode: "cover"
-                }}
-              />
-            </View>
-            <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
-              <Text>My Home</Text>
-            </View>
-          </View>
+          </SafeAreaView>
       </ScrollView>
     );
   }
