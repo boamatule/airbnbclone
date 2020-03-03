@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 export default class Category extends Component {
   render() {
     return (
-      <View>
+      <View
         style={{
           height: 130,
           width: 130,

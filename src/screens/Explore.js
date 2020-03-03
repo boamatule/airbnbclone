@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import { View, TextInput, SafeAreaView, Text, Image, ScrollView } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 import Category from "../components/Category";
-
-
-
 export default class Explore extends Component {
   render() {
     return (
@@ -49,17 +46,24 @@ export default class Explore extends Component {
             >
               What can we help you find, Kriss?
             </Text>
-            <Category imageUri={require("../img/Home.jpg")} name="Home" />
-            <Category
-              imageUri={require("../img/Safari.jpg")}
-              name="Experiences"
-            />
-            <Category
-              imageUri={require("../img/Food.jpg")}
-              name="Resturant"
-            />
-          </View>
 
+            <View style={{ height: 130, marginTop: 20 }}>
+              <ScrollView 
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              > 
+              <Category imageUri={require("../img/Home.jpg")} name="Home" />
+              <Category
+                imageUri={require("../img/Safari.jpg")}
+                name="Experiences"
+              />
+              <Category
+                imageUri={require("../img/Food.jpg")}
+                name="Resturant"
+              />
+              </ScrollView>
+            </View>
+          </View>
           </SafeAreaView>
       </ScrollView>
     );
