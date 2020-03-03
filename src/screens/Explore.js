@@ -48,6 +48,31 @@ export default class Explore extends Component {
               What can we help you find, Boa?
             </Text>
           </View>
+
+          <View
+            style={{
+              height: 130,
+              width: 130,
+              marginLeft: 20,
+              borderWidth: 0.5,
+              borderColor: "#dddddd"
+            }}
+          >
+            <View style={{ flex: 2 }}>
+              <Image
+                source={require("../img/home.jpeg")}
+                style={{
+                  flex: 1,
+                  width: null,
+                  height: null,
+                  resizeMode: "cover"
+                }}
+              />
+            </View>
+            <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
+              <Text>My Home</Text>
+            </View>
+          </View>
       </ScrollView>
     );
   }
