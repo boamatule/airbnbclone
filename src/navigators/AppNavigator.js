@@ -2,7 +2,7 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Explore from '../screens/Explore';
-// import Saved from '../screens/Saved';
+import ForgotPassword from '../screens/ForgotPassword';
 import Inbox from '../screens/Inbox';
 // import Trip from '../screens/Trip';
 import LoggedOut from "../screens/LoggedOut";
@@ -21,15 +21,15 @@ const TabNavigator = createBottomTabNavigator(
         )
       }
     },
-    // Saved: {
-    //   screen: Saved,
-    //   navigationOptions: {
-    //     tabBarLabel: "SAVED",
-    //     tabBarIcon: ({ tintColor }) => (
-    //       <Icon name="ios-heart" color={tintColor} size={24} />
-    //     )
-    //   }
-    // },
+    ForgotPassword: {
+      screen: ForgotPassword,
+      navigationOptions: {
+        tabBarLabel: "ForgotPassword",
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="ios-heart" color={tintColor} size={24} />
+        )
+      }
+    },
     LoggedOut: {
       screen: LoggedOut,
       navigationOptions: {
