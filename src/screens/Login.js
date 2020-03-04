@@ -76,41 +76,41 @@ export default class Login extends Component {
     }
     return true;
   }
-  // static navigationOptions = {
-  //   header: null
-  // };
+  static navigationOptions = {
+    header: null
+  };
 
 
-  // componentDidMount() {
-  //   this.unsubscriber = firebase.auth().onAuthStateChanged( user => {
-  //     this.setState({ user });
-  //   })
-  // }
+  componentDidMount() {
+    this.unsubscriber = firebase.auth().onAuthStateChanged( user => {
+      this.setState({ user });
+    })
+  }
 
-  // Login = () => {
-  //   this.setState({ loadingVisible: true });
+  Login = () => {
+    this.setState({ loadingVisible: true });
 
 
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(this.state.email, this.state.password)
-  //     .then(user => {
-  //       this.setState({ user });
-  //       this.setState({ loadingVisible: false });
-  //     })
-  //     .catch(error => 
-  //      this.setState({
-  //        error: error.message,
-  //        formValid: false
-  //      })
-  //   );
-  // };
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(user => {
+        this.setState({ user });
+        this.setState({ loadingVisible: false });
+      })
+      .catch(error => 
+       this.setState({
+         error: error.message,
+         formValid: false
+       })
+    );
+  };
 
-  // componentWillUnmount() {
-  //   if (this.unsubscriber) {
-  //     this.unsubscriber();
-  //   }
-  // }
+  componentWillUnmount() {
+    if (this.unsubscriber) {
+      this.unsubscriber();
+    }
+  }
 
   render() {
     const { formValid } = this.state;
@@ -151,7 +151,7 @@ export default class Login extends Component {
           </ScrollView>
             <View style={styles.nextButton}>
               <NextArrowButton
-                handleNextButton={this.handleNextButton}
+                handelPress={this.handleNextButton}
                 disable={this.toggleNextButtonState()}
               />
           </View>

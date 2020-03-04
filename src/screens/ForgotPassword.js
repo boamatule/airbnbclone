@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import firebase from "react-native-firebase";
 import colors from "../styles/colors";
@@ -19,9 +20,15 @@ export default class ForgotPassword extends Component {
     };
   }
 
-  handleEmailChange = email => {
-    this.setState({ email: email });
-  }
+  static navigationOptions = ({ navigation }) => ({
+    headerStyle: {
+      borderBottomWidth: 0,
+      elevation: 0
+    },
+    headerTransparent: true,
+    headerTintColor: colors.white
+  });
+
 
   submitEmail = () => {
     firebase
@@ -33,7 +40,12 @@ export default class ForgotPassword extends Component {
       .catch(function(error) {
         Alert.alert(error.message);
       });
-    }
+    };
+
+    handleEmailChange = email => {
+      this.setState({ email: email });
+    };
+  
   render() {
     const { background } = this.props;
     return (
@@ -60,7 +72,7 @@ export default class ForgotPassword extends Component {
           />
         </View>
 
-        <NextArrowButton onPress={this.submitEmail} disabled={false} />
+        <NextArrowButton handelPress={this.submitEmail} disabled={false} />
       </KeyboardAvoidingView>
     );
   }

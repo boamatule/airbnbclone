@@ -6,13 +6,13 @@ import colors from '../../styles/colors';
 
 export default class NextArrowButton extends Component {
   render() {
-    const { disabled, handleNextButton } = this.props;
+    const { disabled, handelPress } = this.props;
     const opacityStyle = disabled ? 0.2 : 0.6;
     return (
       <View style={styles.buttonWrapper}>
         <TouchableHighlight
           style={[{opacity: opacityStyle}, styles.button]}
-          handleNextButton={handleNextButton}
+          onPress={handelPress}
           disabled={disabled}
           >
           <Icon 
