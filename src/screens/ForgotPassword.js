@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
+import firebase from "react-native-firebase";
 import colors from "../styles/colors";
 import InputField from '../components/InputField';
 import NextArrowButton from "../components/buttons/NextArrowButton";
@@ -21,6 +22,18 @@ export default class ForgotPassword extends Component {
   handleEmailChange = email => {
     this.setState({ email: email });
   }
+
+  submitEmail = () => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(this.state.email)
+      .then(function() {
+        Alert.alert("email sent");
+      })
+      .catch(function(error) {
+        Alert.alert(error.message);
+      });
+    }
   render() {
     const { background } = this.props;
     return (
@@ -47,7 +60,7 @@ export default class ForgotPassword extends Component {
           />
         </View>
 
-        < NextArrowButton _handelPress_={this.submitEmail} _disabled_={false} /> 
+        <NextArrowButton onPress={this.submitEmail} disabled={false} />
       </KeyboardAvoidingView>
     );
   }
