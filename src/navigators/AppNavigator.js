@@ -8,7 +8,7 @@ import Inbox from '../screens/Inbox';
 import LoggedOut from "../screens/LoggedOut";
 import Login from "../screens/Login";
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Image} from 'react-native'
+import {Image} from 'react-native';
 
 const TabNavigator = createBottomTabNavigator(
   {

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import  { PropTypes } from 'prop-types';
+import React, {Component} from 'react';
+import {PropTypes} from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   View,
@@ -13,54 +13,52 @@ import colors from '../../styles/colors';
 
 export default class Notification extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
     this.state = {
-      positionValue: new Animated.Value(60)
+      positionValue: new Animated.Value(-80),
     };
     this.closeNotification = this.closeNotification.bind(this);
     this.animatedNotification = this.animatedNotification.bind(this);
   }
 
-  animatedNotification(value) {
-    const { positionValue } = this.state;
-    Animated.timing(
-      positionValue,
-      {
-        toValue: value,
-        dutarion: 400,
-        velocity: 3,
-        tension: 2,
-        friction: 8,
-        easing: Easing.easeOutBack
-      }
-    ).start();
-  }
+  animatedNotification = value => {
+    Animated.timing(this.positionValue, {
+      toValue: value,
+      dutarion: 300,
+      velocity: 3,
+      tension: 2,
+      friction: 8,
+      easing: Easing.easeOutBack,
+    }).start();
+  };
+
   closeNotification() {
     this.props.handleCloseNotification();
   }
   render() {
-    const { type, firstLine, secondLine, showNotification } = this.props;
-    showNotification ? this.animatedNotification(0) : this.animatedNotification(60);
-    const { positionValue } = this.state;
+    const {type, firstLine, secondLine, showNotification} = this.props;
+    showNotification
+      ? this.animatedNotification(0)
+      : this.animatedNotification(-80);
+    // const {positionValue} = this.state;
     return (
-      <Animated.View style={[{transform: [{ translateY: positionValue }]}, styles.wrapper]}>
+      <Animated.View
+        style={[
+          {transform: [{translateY: this.positionValue}]},
+          styles.wrapper,
+        ]}>
         <View style={styles.notificationContent}>
           <Text style={styles.errorText}>{type}</Text>
           <Text style={styles.errorMessage}>{firstLine}</Text>
           <Text style={styles.errorMessage}>{secondLine}</Text>
         </View>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.closeButtom}
-          onPress={this.closeNotification}
-        >
-          <Icon 
-            name='times'
-            size={20}
-            color={colors.lightGray}
-          />
+          onPress={this.closeNotification}>
+          <Icon name="times" size={20} color={colors.lightGray} />
         </TouchableOpacity>
       </Animated.View>
-    )
+    );
   }
 }
 
@@ -98,5 +96,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     top: 10,
-  }
-})
+  },
+});
