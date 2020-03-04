@@ -11,6 +11,16 @@ import InputField from '../components/InputField';
 import NextArrowButton from "../components/buttons/NextArrowButton";
 
 export default class ForgotPassword extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      emailAdress: ""
+    };
+  }
+
+  handleEmailChange = email => {
+    this.setState({ email: email });
+  }
   render() {
     const { background } = this.props;
     return (
@@ -33,6 +43,7 @@ export default class ForgotPassword extends Component {
             labelColor={colors.white}
             borderBottomColor={colors.white}
             inputType="email"
+            onChangeText={email => this.handleEmailChange(email)}
           />
         </View>
 
