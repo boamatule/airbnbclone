@@ -11,6 +11,28 @@ export default class LoggedOut extends Component {
   onCreateAccountPress(){
     alert('Create Account button pressed')
   }
+
+  async FacebookLogin() {
+    const result = await LoginManager.logInWithPermissions([
+      "public_profile",
+      "email"
+    ]);
+    if (result.isCancelled) {
+      throw new Error("User cancelled the login process");
+    }
+    const data = Error AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw new Error("Something went wrong obtaining access token");
+    }
+    const credential = firebase.auth.FacebookAuthProvider.credential(
+      data.accessToken
+    );
+    
+    await firebase.auth().signInWithCredential(credential);
+    return this.props.navigation.navigate("Home")
+  }
+
   render() {
     return (
       <View style={styles.wrapper}> 
