@@ -20,7 +20,7 @@ export default class LoggedOut extends Component {
     if (result.isCancelled) {
       throw new Error("User cancelled the login process");
     }
-    const data = Error AccessToken.getCurrentAccessToken();
+    const data = await AccessToken.getCurrentAccessToken();
 
     if (!data) {
       throw new Error("Something went wrong obtaining access token");
@@ -44,13 +44,15 @@ export default class LoggedOut extends Component {
           <Text style={styles.welcomeText}>
             Welcome to Airbnb Clone with React Native
           </Text>
-          <RoundedButton 
-            text="Continue with Facebook" 
-            textColor={colors.green01}
-            background={colors.white}
-            icon={
-              <Icon name="facebook" size={20} style={styles.facebookIcon} handleOnPress={this.onFacebookPress} />}
-          />
+            <RoundedButton 
+              text="Connect to Facebook" 
+              textColor={colors.green01}
+              background={colors.white}
+              icon={
+                <Icon name="facebook" size={20} style={styles.facebookIcon} />
+              }
+              onPress={() => this.FacebookLogin()}
+              />
           <RoundedButton text="Create Account" 
           textColor={colors.white}
           handleOnPress={this.onCreateAccountPress}

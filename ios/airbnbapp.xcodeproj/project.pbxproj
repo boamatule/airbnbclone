@@ -20,7 +20,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* airbnbappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* airbnbappTests.m */; };
 		B80A3CB0651717C97A503374 /* libPods-airbnbappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5402A617E4ACEEDCAE4CB44D /* libPods-airbnbappTests.a */; };
 		B9491D36240FA5B800CB0428 /* airbnbapp.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = B9491D35240FA5B800CB0428 /* airbnbapp.xcworkspace */; };
-		B9491D38240FA66700CB0428 /* airbnbapp.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = B9491D37240FA66700CB0428 /* airbnbapp.xcworkspace */; };
 		B9FED58E240DF55000816C77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9FED58D240DF54F00816C77 /* GoogleService-Info.plist */; };
 		D9E8C630C749D96D04ED340E /* libPods-airbnbapp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A68F8F5F9BF0DCC3C536E3 /* libPods-airbnbapp-tvOS.a */; };
 /* End PBXBuildFile section */
@@ -64,7 +63,6 @@
 		95A68F8F5F9BF0DCC3C536E3 /* libPods-airbnbapp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-airbnbapp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA462454E14D9760F4BBD34F /* Pods-airbnbapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbapp.debug.xcconfig"; path = "Target Support Files/Pods-airbnbapp/Pods-airbnbapp.debug.xcconfig"; sourceTree = "<group>"; };
 		B9491D35240FA5B800CB0428 /* airbnbapp.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = airbnbapp.xcworkspace; sourceTree = "<group>"; };
-		B9491D37240FA66700CB0428 /* airbnbapp.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = airbnbapp.xcworkspace; path = ../../../Documents/airbnbclone/ios/airbnbapp.xcworkspace; sourceTree = "<group>"; };
 		B9FED58D240DF54F00816C77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA05E9D0C0E984FBDA9A18F7 /* libPods-airbnbapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-airbnbapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DA782CDDF1A9B2896E116D /* Pods-airbnbappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnbappTests.release.xcconfig"; path = "Target Support Files/Pods-airbnbappTests/Pods-airbnbappTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				B9491D35240FA5B800CB0428 /* airbnbapp.xcworkspace */,
-				B9491D37240FA66700CB0428 /* airbnbapp.xcworkspace */,
 				13B07FAE1A68108700A75B9A /* airbnbapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* airbnbappTests */,
@@ -360,7 +357,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9491D36240FA5B800CB0428 /* airbnbapp.xcworkspace in Resources */,
-				B9491D38240FA66700CB0428 /* airbnbapp.xcworkspace in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				B9FED58E240DF55000816C77 /* GoogleService-Info.plist in Resources */,
