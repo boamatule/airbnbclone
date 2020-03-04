@@ -2,9 +2,9 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Explore from '../screens/Explore';
-import Saved from '../screens/Saved';
+// import Saved from '../screens/Saved';
 import Inbox from '../screens/Inbox';
-import Trip from '../screens/Trip';
+// import Trip from '../screens/Trip';
 import LoggedOut from "../screens/LoggedOut";
 import Login from "../screens/Login";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,27 +21,45 @@ const TabNavigator = createBottomTabNavigator(
         )
       }
     },
-    Saved: {
-      screen: Saved,
+    // Saved: {
+    //   screen: Saved,
+    //   navigationOptions: {
+    //     tabBarLabel: "SAVED",
+    //     tabBarIcon: ({ tintColor }) => (
+    //       <Icon name="ios-heart" color={tintColor} size={24} />
+    //     )
+    //   }
+    // },
+    LoggedOut: {
+      screen: LoggedOut,
       navigationOptions: {
-        tabBarLabel: "SAVED",
+        tabBarLabel: "LOGGEDOUT",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="ios-heart" color={tintColor} size={24} />
         )
       }
     },
-    Trip: {
-      screen: Trip,
+    Login: {
+      screen: Login,
       navigationOptions: {
-        tabBarLabel: "TRIP",
+        tabBarLabel: "LOGIN",
         tabBarIcon: ({ tintColor }) => (
-          <Image
-            source={require("../img/airbnb1.png")}
-            style={{ height: 24, width: 24, tintColor: tintColor }}
-          />
+          <Icon name="ios-star" color={tintColor} size={24} />
         )
       }
     },
+    // Trip: {
+    //   screen: Trip,
+    //   navigationOptions: {
+    //     tabBarLabel: "TRIP",
+    //     tabBarIcon: ({ tintColor }) => (
+    //       <Image
+    //         source={require("../img/airbnb1.png")}
+    //         style={{ height: 24, width: 24, tintColor: tintColor }}
+    //       />
+    //     )
+    //   }
+    // },
     Inbox: {
       screen: Inbox,
       navigationOptions: {

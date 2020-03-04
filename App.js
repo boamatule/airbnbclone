@@ -8,13 +8,13 @@ import Login from "./src/screens/Login";
 // import Saved from './screens/Saved';
 // import Inbox from './screens/Inbox';
 // import Trip from './screens/Trip';
-import Navigators from './src/components/Navigators';
+import AppNavigator from './src/navigators/AppNavigator';
 
 
 export default class App extends Component {
   render() {
     // return <Login />;
-    return <Navigators />;
+    return <AppNavigator />;
   }
 }
 

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native"
 import colors from "../styles/colors";
 import { Icon } from "react-native-vector-icons/dist/FontAwesome";
 import RoundedButton from "../components/buttons/RoundedButton";
+import { LoginManager,AccessToken } from 'react-native-fbsdk';
 export default class LoggedOut extends Component {
   onFacebookPress() {
     alert('Facebook button pressed');
