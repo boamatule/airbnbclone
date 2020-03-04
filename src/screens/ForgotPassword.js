@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import colors from "../styles/colors";
 import InputField from '../components/InputField';
-import RoundedButton from "../components/buttons/RoundedButton";
+import NextArrowButton from "../components/buttons/NextArrowButton";
 
 export default class ForgotPassword extends Component {
   render() {
@@ -24,7 +24,19 @@ export default class ForgotPassword extends Component {
           <Text style={styles.ForgotPasswordSubHeading}>
             Enter your email to find your account.
           </Text>
+
+          <InputField
+            customStyle={{ marginTop: 100 }}
+            textColor={colors.white}
+            labelText="EMAIL ADDRESS"
+            labelTextSize={14}
+            labelColor={colors.white}
+            borderBottomColor={colors.white}
+            inputType="email"
+          />
         </View>
+
+        < NextArrowButton _handelPress_={this.submitEmail} _disabled_={false} /> 
       </KeyboardAvoidingView>
     );
   }
