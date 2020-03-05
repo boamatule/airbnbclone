@@ -4,6 +4,7 @@ import colors from '../styles/colors';
 import {Icon} from 'react-native-vector-icons/dist/FontAwesome';
 import RoundedButton from '../components/buttons/RoundedButton';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import { GoogleSignin } from '@react-native-community/google-signin';
 export default class LoggedOut extends Component {
   onFacebookPress() {
     alert('Facebook button pressed');
@@ -33,6 +34,29 @@ export default class LoggedOut extends Component {
     return this.props.navigation.navigate('Home');
   }
 
+  async googleLogin() {
+    try {
+      // add any configuration settings here:
+      await GoogleSignin.configure();
+
+      const data = await GoogleSignin.signIn();
+
+      // create a new firebase credential with the token
+      const credential = firebase.auth.GoogleAuthProvider.credential(
+        data.idToken,
+        data.accessToken,
+      );
+      // login with credential
+      const firebaseUserCredential = await firebase
+        .auth()
+        .signInWithCredential(credential);
+
+      console.log(firebaseUserCredential.user.toJSON());
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   render() {
     return (
       <View style={styles.wrapper}>
@@ -59,7 +83,7 @@ export default class LoggedOut extends Component {
             textColor={colors.green01}
             background={colors.white}
             icon={<Icon name="google" size={20} style={styles.facebookIcon} />}
-            onPress={() => this.GoogleLogin()}
+            onPress={() => this.googleLogin()}
           />
 
           <RoundedButton
