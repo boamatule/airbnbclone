@@ -9,9 +9,16 @@ import Login from "./src/screens/Login";
 // import Inbox from './screens/Inbox';
 // import Trip from './screens/Trip';
 import AppNavigator from './src/navigators/AppNavigator';
-
+import SplashScreen from 'react-native-splash-screen';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  componentDidMount() {
+    SplashScreen.hide();
+  }
   render() {
     // return <Login />;
     return <AppNavigator />;
