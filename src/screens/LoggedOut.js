@@ -1,41 +1,65 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native";
-import colors from "../styles/colors";
-import { Icon } from "react-native-vector-icons/dist/FontAwesome";
-import RoundedButton from "../components/buttons/RoundedButton";
-import { LoginManager,AccessToken } from 'react-native-fbsdk';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View, Image, TouchableHighlight} from 'react-native';
+import colors from '../styles/colors';
+import {Icon} from 'react-native-vector-icons/dist/FontAwesome';
+import RoundedButton from '../components/buttons/RoundedButton';
+import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import { GoogleSignin } from '@react-native-community/google-signin';
 export default class LoggedOut extends Component {
   onFacebookPress() {
     alert('Facebook button pressed');
   }
-  onCreateAccountPress(){
-    alert('Create Account button pressed')
+  onCreateAccountPress() {
+    alert('Create Account button pressed');;
   }
 
   async FacebookLogin() {
     const result = await LoginManager.logInWithPermissions([
-      "public_profile",
-      "email"
+      'public_profile',
+      'email',,
     ]);
     if (result.isCancelled) {
-      throw new Error("User cancelled the login process");
+      throw new Error('User cancelled the login process');
     }
     const data = await AccessToken.getCurrentAccessToken();
 
     if (!data) {
-      throw new Error("Something went wrong obtaining access token");
+      throw new Error('Something went wrong obtaining access token');
     }
     const credential = firebase.auth.FacebookAuthProvider.credential(
-      data.accessToken
+      data.accessToken,
     );
-    
+
     await firebase.auth().signInWithCredential(credential);
-    return this.props.navigation.navigate("Home")
+    return this.props.navigation.navigate('Home');
+  }
+
+  async googleLogin() {
+    try {
+      // add any configuration settings here:
+      await GoogleSignin.configure();
+
+      const data = await GoogleSignin.signIn();
+
+      // create a new firebase credential with the token
+      const credential = firebase.auth.GoogleAuthProvider.credential(
+        data.idToken,
+        data.accessToken,
+      );
+      // login with credential
+      const firebaseUserCredential = await firebase
+        .auth()
+        .signInWithCredential(credential);
+
+      console.log(firebaseUserCredential.user.toJSON());
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   render() {
     return (
-      <View style={styles.wrapper}> 
+      <View style={styles.wrapper}>
         <View style={styles.welcomeWrapper}>
           <Image
             style={styles.logo}
@@ -44,24 +68,33 @@ export default class LoggedOut extends Component {
           <Text style={styles.welcomeText}>
             Welcome to Airbnb Clone with React Native
           </Text>
-            <RoundedButton 
-              text="Connect to Facebook" 
-              textColor={colors.green01}
-              background={colors.white}
-              icon={
-                <Icon name="facebook" size={20} style={styles.facebookIcon} />
-              }
-              onPress={() => this.FacebookLogin()}
-              />
-          <RoundedButton text="Create Account" 
-          textColor={colors.white}
-          handleOnPress={this.onCreateAccountPress}
+          <RoundedButton
+            text="Connect to Facebook"
+            textColor={colors.green01}
+            background={colors.white}
+            icon={
+              <Icon name="facebook" size={20} style={styles.facebookIcon} />
+            }
+            onPress={() => this.FacebookLogin()}
+          />
+
+          <RoundedButton
+            text="Connect to Google"
+            textColor={colors.green01}
+            background={colors.white}
+            icon={<Icon name="google" size={20} style={styles.facebookIcon} />}
+            onPress={() => this.googleLogin()}
+          />
+
+          <RoundedButton
+            text="Create Account"
+            textColor={colors.white}
+            handleOnPress={this.onCreateAccountPress}
           />
 
           <TouchableHighlight
             style={styles.moreOptionsButton}
-            onPress={this.onMoreOptionsPress}
-            >
+            onPress={this.onMoreOptionsPress}>
             <Text style={styles.moreOptionsButtonText}>More options</Text>
           </TouchableHighlight>
 
@@ -69,7 +102,7 @@ export default class LoggedOut extends Component {
             <Text style={styles.termsText}>
               By tapping Continue, Create Account or More
             </Text>
-            <Text style={styles.termsText}>{" options,"}</Text>
+            <Text style={styles.termsText}>{' options,'}</Text>
             <Text style={styles.termsText}>{"I agree to Airbnb's "}</Text>
             <TouchableHighlight style={styles.linkButton}>
               <Text style={styles.termsText}>Terms of Service</Text>
@@ -97,32 +130,32 @@ export default class LoggedOut extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    display: "flex",
-    backgroundColor: colors.green01 
+    display: 'flex',
+    backgroundColor: colors.green01,
   },
   welcomeWrapper: {
     flex: 1,
-    display: "flex",
+    display: 'flex',
     marginTop: 30,
-    padding: 20
+    padding: 20,
   },
   logo: {
     width: 50,
     height: 50,
     marginTop: 50,
-    marginBottom: 40
+    marginBottom: 40,
   },
   welcomeText: {
     fontSize: 30,
     color: colors.white,
-    fontWeight: "300",
-    marginBottom: 40
+    fontWeight: '300',
+    marginBottom: 40,
   },
   facebookIcon: {
     color: colors.green01,
-    position: "relative",
+    position: 'relative',
     left: 20,
-    zIndex: 8
+    zIndex: 8,
   },
   moreOptionsButton: {
     marginTop: 10,
