@@ -11,16 +11,18 @@ import colors from '../styles/colors';
 import InputField from '../components/InputField';
 import NextArrowButton from '../components/buttons/NextArrowButton';
 import Notification from '../components/buttons/Notification';
+import Loader from '../components/Loader';
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       formValid: true,
       validEmail: false,
       emailAddress: '',
       validPassword: false,
       error: '',
-      user: null,
+      loadingVisible: false,
     };
     this.handleCloseNotification = this.handleCloseNotification.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -102,6 +104,7 @@ export default class Login extends Component {
         this.setState({
           error: error.message,
           formValid: false,
+          loadingVisible: false,
         }),
       );
   };
@@ -113,7 +116,7 @@ export default class Login extends Component {
   }
 
   render() {
-    const {formValid} = this.state;
+    const {formValid, loadingVisible} = this.state;
     const showNotification = formValid ? false : true;
     const background = formValid ? colors.green01 : colors.darkOrange;
     const notificationMarginTop = showNotification ? 10 : 0;
@@ -169,6 +172,7 @@ export default class Login extends Component {
               secondLine="Please try again."
             />
           </View>
+          <Loader modalVisible={loadingVisible} animationType="fade" />
         </View>
       </KeyboardAvoidingView>
     );
@@ -213,4 +217,3 @@ const styles = StyleSheet.create({
     zIndex: 999,
   },
 });
-

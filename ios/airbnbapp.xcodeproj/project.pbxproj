@@ -732,7 +732,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA462454E14D9760F4BBD34F /* Pods-airbnbapp.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 734BK72EDS;
@@ -753,7 +752,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 955F0A7DB837313536D7DCC5 /* Pods-airbnbapp.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 734BK72EDS;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
